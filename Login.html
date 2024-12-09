@@ -1,63 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>email validation</title>
-    <!-- <link rel="stylesheet" href="email.css"> -->
+    <title>Login Form</title>
+    <script>
+        function validateEmail() {
+            var email = document.getElementById("email").value;
+            if (!email.includes('@')) {
+                alert("Invalid email.");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
-
 <body>
-    <header>
 
-        <div class="heading">
+    <h2>Login Form</h2>
+    <form onsubmit="return validateEmail()">
+        
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" name="email" required><br><br>
 
-            <h1>Welocome to Login page</h1>
-        </div>
-    </header>
-    <main>
-        <form id="emailForm">
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
 
-            <div class="container">
-                
-                
-                
-                <div class="email">
-                    <label for="email">Email : </label>
-                    <input type="text" id="email" placeholder="Enter Email ">
-                </div>
-                <div class="password">
-                    <label for="password">Password : </label>
-                    <input type="text" id="pass" placeholder="Enter password ">
-                </div>
-            </div>
-            <div class="btn">
-                
-                <button id ="btn" type="submit">submit</button>
-            </div>
-        </form>
-            <div class="para">
-                
-                <p id="errormsg"></p>
-            </div>
-    </main>
-
-    <script>btn=document.querySelector('#btn');
-btn.addEventListener("click", function(event) {
-    const email = document.getElementById("email").value;
-    const errorMessage = document.getElementById("errormsg");
-    errormsg.textContent = "";
-    if (!validateEmail(email)) {
-        event.preventDefault(); 
-        errormsg.textContent = "Please enter a valid email address.";
-    }
-});
-function validateEmail(email) {
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    return emailPattern.test(email);
-}</script>
+        <input type="submit" value="Login">
+    </form>
 
 </body>
-
 </html>
